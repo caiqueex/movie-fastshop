@@ -1,0 +1,34 @@
+import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+@Injectable()
+export class StorageService {
+  private apiKey = '?api_key=1bded0cf5ec81699b719a0ab217e461e';
+  private apiUrl = 'https://api.themoviedb.org/';
+  imageBaseurl = 'https://image.tmdb.org/t/p/';
+
+  constructor(
+    private http: HttpClient,
+  ) { }
+
+  getList(category) {
+    return this.http.get(this.apiUrl + '3/movie/' + category + this.apiKey + '&language=pt-BR');
+  }
+
+  getImageBaseUrl() {
+   return this.imageBaseurl;
+  }
+
+  search(query) {
+    query = this.convertToSlug(query);
+    return this.http.get(this.apiUrl + '3/search/movie' + this.apiKey + '&query=' + query + '&language=pt-BR');
+  }
+
+  convertToSlug(string) {
+    string = string.toLowerCase()
+      .replace(/[^a-z0-9 -]/g, '')
+      .replace(/\s+/g, '+')
+      .replace(/-+/g, '+');
+    return string;
+  }
+}

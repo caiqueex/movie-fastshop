@@ -1,0 +1,39 @@
+<!-- <div>
+    <div class="card">
+        <div class="card-body">
+                <div class="row">
+                        <div class="col-md-12">
+                            <div class="card-title">
+                                <h2>{{ movie.title }}</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <p><img src="{{ posterUrl }}"  class="rounded mx-auto d-block"></p>
+                        </div>
+                        <div class="col-md-3">
+                            <p><strong>Average vote: </strong>{{ movie.vote_average }}</p>
+                            <p><strong>Relase date: </strong>{{ movie.release_date }}</p>
+                            <p><strong>Popularity: </strong>{{ movie.popularity }}</p>
+                            <p><strong>Votes: </strong>{{ movie.vote_count }}</p>
+                            <button class="btn btn-primary" (click)="changeButton()">{{ displayButton }}</button>
+                        </div>
+                        <div class="col-md-6" *ngIf="display">
+                            <app-movie-details [movie]="movie"></app-movie-details>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+</div> -->
+
+
+    <img class="card-img-top" src="{{ posterUrl }}" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">{{ movie.title }}</h5>
+        <span class="card-text limited">{{ movie.overview }}</span>
+    </div>
+    <div class="card-footer">
+            <!-- <app-movie-details [movie]="movie"></app-movie-details> -->
+            <small class="text-muted">Mais informações</small>
+          </div>
+

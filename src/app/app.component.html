@@ -1,0 +1,21 @@
+<nav class="navbar navbar-toggleable-md navbar-light bg-light">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarContent">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarContent">
+    <form class="form-inline my-2 my-lg-0">
+          <input [(ngModel)]="filter" 
+          (keyup.enter)="search(filter)"
+          name="search"
+          class="form-control mr-sm-2" 
+          type="search" placeholder="Encontrar filme...">
+          <button class="btn btn-info my-2 my-sm-0" (click)="search(filter)">Pesquisar</button>
+    </form>
+  </div>
+</nav>
+<div class="container">
+    <router-outlet></router-outlet>
+  <footer>
+    <p>Caique Lourenço</p>
+  </footer>
+</div>
