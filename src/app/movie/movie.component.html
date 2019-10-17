@@ -1,39 +1,30 @@
-<!-- <div>
-    <div class="card">
-        <div class="card-body">
-                <div class="row">
-                        <div class="col-md-12">
-                            <div class="card-title">
-                                <h2>{{ movie.title }}</h2>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <p><img src="{{ posterUrl }}"  class="rounded mx-auto d-block"></p>
-                        </div>
-                        <div class="col-md-3">
-                            <p><strong>Average vote: </strong>{{ movie.vote_average }}</p>
-                            <p><strong>Relase date: </strong>{{ movie.release_date }}</p>
-                            <p><strong>Popularity: </strong>{{ movie.popularity }}</p>
-                            <p><strong>Votes: </strong>{{ movie.vote_count }}</p>
-                            <button class="btn btn-primary" (click)="changeButton()">{{ displayButton }}</button>
-                        </div>
-                        <div class="col-md-6" *ngIf="display">
-                            <app-movie-details [movie]="movie"></app-movie-details>
-                        </div>
-                    </div>
-                </div>
-        </div>
-
-</div> -->
-
-
     <img class="card-img-top" src="{{ posterUrl }}" alt="Card image cap">
     <div class="card-body">
         <h5 class="card-title">{{ movie.title }}</h5>
         <span class="card-text limited">{{ movie.overview }}</span>
     </div>
     <div class="card-footer">
-            <!-- <app-movie-details [movie]="movie"></app-movie-details> -->
-            <small class="text-muted">Mais informações</small>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalLongoExemplo">
+                Mais informações
+        </button>
+    </div>
+
+    <div class="modal fade" id="ModalLongoExemplo" tabindex="-1" role="dialog" aria-labelledby="TituloModalLongoExemplo" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="TituloModalLongoExemplo">Detalhe do filme</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                        <app-movie-details [movie]="movie"></app-movie-details>
+                    </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
           </div>
 
