@@ -5,7 +5,7 @@ body {
 nav {
     background: black;
     font-weight: 400;
-    padding: 10px !important;
+    /* padding: 10px !important; */
 }
 
 .card {
@@ -24,6 +24,18 @@ footer {
     margin-top: 10px;
 }
 
-.navbar {
-    padding: 0
+@media (min-width: 992px){
+    .navbar-toggleable-md .navbar-toggler {
+        display: none;
+    }
+
+    .navbar {
+        padding: 10px !important;
+    }
+}
+
+@media (max-width: 992px){
+    .navbar {
+        padding: 0px !important;
+    }
 }
