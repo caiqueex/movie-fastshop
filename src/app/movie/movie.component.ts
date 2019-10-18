@@ -22,7 +22,8 @@ export class MovieComponent implements OnInit {
 
   constructor(
     private storage: StorageService,
-    public modal: Modal
+    public modal: Modal,
+    
   ) { }
 
   ngOnInit() {
@@ -42,17 +43,52 @@ export class MovieComponent implements OnInit {
   // }
 
   clicado(movie) {
-    console.log(movie)
+    this.storage.getList(movie.id)
+    .subscribe(
+      (response: any) => {
+        
+        this.clicked = response;
+
     this.modal.alert()
-        .size('lg')
-        .showClose(true)
-        .title(movie.title)
-        .body(`
+    .size('lg')
+    .showClose(true)
+    .title(movie.title)
+    .body(`
 
-            <b>Descrição:</b>
-            <p>${movie.overview}</p>`)
-        .open();
+    <p>
+    <strong>Genero: </strong>
+    <span>
+    ${response.genres.map(function (key) {
+      return `<li>${key.name}</li>`
+  }).join("")}
+    </span>
+  </p>
+  <p>
+    <strong>Descrição: </strong>
+    ${response.overview}
+  </p>
+  <p>
+    <strong>País de produção: </strong>
+    <span>
+    ${response.production_countries.map(function (key) {
+      return `<li>${key.name}</li>`
+  }).join("")}
+    </span>
+  </p>
+  <p>
+    <strong>Companias de produção: </strong>
+    <span>
+    ${response.production_companies.map(function (key) {
+      return `<li>${key.name}</li>`
+  }).join("")}
+    </span>
+  </p>
+        
+        `)
 
+    .open();
+       }
+    );
   }
 
   reciverFeedback(resposta) {
