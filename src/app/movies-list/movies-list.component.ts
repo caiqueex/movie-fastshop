@@ -12,6 +12,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class MoviesListComponent implements OnInit {
   moviesList = [];
+  genresList = [];
   listName = 'popular';
 
 
@@ -28,6 +29,9 @@ export class MoviesListComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.getGenres();
+
     this.route.params
     .subscribe(
       (params: Params) => {
@@ -48,6 +52,24 @@ export class MoviesListComponent implements OnInit {
         this.sortByPopularity(this.moviesList);
         this.listName = category[0].toUpperCase() + category.slice(1)
         .replace(/_/g, ' ');
+      }
+    );
+  }
+
+  getGenres() {
+    this.storage.getGenres()
+    .subscribe(
+      (response) => {
+        this.genresList = response['genres'];
+      }
+    );
+  }
+
+  selectedGenre(genre) {
+    this.storage.getMovieByGenre(genre)
+    .subscribe(
+      (response) => {
+       this.moviesList = response['results'];
       }
     );
   }

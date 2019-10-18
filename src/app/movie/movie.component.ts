@@ -13,6 +13,7 @@ export class MovieComponent implements OnInit {
   posterUrl: string;
   display = false;
   displayButton = 'Mostrar detalhes';
+  clicked;
 
   constructor(
     private storage: StorageService,
@@ -25,6 +26,10 @@ export class MovieComponent implements OnInit {
       this.imgBaseUrl = this.storage.getImageBaseUrl()
       this.posterUrl = this.imgBaseUrl + 'w154' + this.movie.poster_path;
     }
+  }
+  clicado(movie){
+    this.clicked = null
+    this.clicked = movie
   }
 
   changeButton() {

@@ -8,7 +8,6 @@ import { StorageService } from '../../storage.service';
 })
 export class MovieDetailsComponent implements OnInit {
   @Input() movie;
-  imdbLink = 'http://www.imdb.com/title';
 
   constructor(
     private storage: StorageService,

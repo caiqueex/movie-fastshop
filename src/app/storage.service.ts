@@ -24,6 +24,14 @@ export class StorageService {
     return this.http.get(this.apiUrl + '3/search/movie' + this.apiKey + '&query=' + query + '&language=pt-BR');
   }
 
+  getGenres() {
+    return this.http.get(this.apiUrl + '3/genre/movie/list' + this.apiKey + '&language=pt-BR');
+  }
+
+  getMovieByGenre(genre) {
+    return this.http.get(this.apiUrl + '3/discover/movie' + this.apiKey + '&with_genres=' + genre + '&language=pt-BR');
+  }
+
   convertToSlug(string) {
     string = string.toLowerCase()
       .replace(/[^a-z0-9 -]/g, '')
