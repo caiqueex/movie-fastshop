@@ -39,3 +39,7 @@ footer {
         padding: 0px !important;
     }
 }
+
+.card-group {
+    text-align: center;
+}
