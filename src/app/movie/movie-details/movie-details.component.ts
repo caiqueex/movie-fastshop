@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { StorageService } from '../../storage.service';
 
 @Component({
@@ -7,14 +7,18 @@ import { StorageService } from '../../storage.service';
   styleUrls: ['./movie-details.component.css']
 })
 export class MovieDetailsComponent implements OnInit {
-  @Input() movie;
+  @Input() movie;  
+
+  filme;
 
   constructor(
     private storage: StorageService,
-  ) { }
+  ) { 
+    
+  }
 
   ngOnInit() {
-    this.storage.getList(this.movie.id)
+    this.storage.getList(this.movie)
     .subscribe(
       (response) => {
         this.movie = response;

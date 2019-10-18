@@ -1,13 +1,12 @@
     <img class="card-img-top" src="{{ posterUrl }}" alt="Card image cap">
     <div class="card-body">
-        <h5 class="card-title">{{ movie.title }}</h5>
-        <span class="card-text limited">{{ movie.overview }}</span>
+        <h5 class="card-title">{{ movies.title }}</h5>
+        <span class="card-text limited">{{ movies.overview }}</span>
     </div>
     <div class="card-footer">
-        <button type="button" (click)="clicado(movie)" class="btn btn-primary" data-toggle="modal" data-target="#ModalLongoExemplo">
+        <button type="button" (click)="clicado(movies)" class="btn btn-primary" data-toggle="modal" data-target="#ModalLongoExemplo">
                 Mais informações
         </button>
 
-        <app-movie-details *ngIf="clicked" [movie]="clicked"></app-movie-details>
-        
+             
     </div>

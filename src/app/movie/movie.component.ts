@@ -1,5 +1,10 @@
 import { StorageService } from '../storage.service';
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalModule } from 'ngx-modialog';
+import { BootstrapModalModule, Modal, bootstrap4Mode } from 'ngx-modialog/plugins/bootstrap';
+
+bootstrap4Mode();
+declare var $: any;
 
 @Component({
   selector: 'app-movie',
@@ -7,7 +12,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./movie.component.css']
 })
 export class MovieComponent implements OnInit {
-  @Input() movie;
+  @Input() movies;
   movieDetails = {};
   imgBaseUrl: string;
   posterUrl: string;
@@ -17,19 +22,41 @@ export class MovieComponent implements OnInit {
 
   constructor(
     private storage: StorageService,
+    public modal: Modal
   ) { }
 
   ngOnInit() {
-    if (this.movie.poster_path === null) {
+    if (this.movies.poster_path === null) {
       this.posterUrl = 'http://via.placeholder.com/154x218?text=Not+avaliable';
     } else {
       this.imgBaseUrl = this.storage.getImageBaseUrl()
-      this.posterUrl = this.imgBaseUrl + 'w154' + this.movie.poster_path;
+      this.posterUrl = this.imgBaseUrl + 'w154' + this.movies.poster_path;
     }
   }
-  clicado(movie){
-    this.clicked = null
-    this.clicked = movie
+  // clicado(movie){
+  //   alert(movie.overview)
+
+
+
+    
+  // }
+
+  clicado(movie) {
+    console.log(movie)
+    this.modal.alert()
+        .size('lg')
+        .showClose(true)
+        .title(movie.title)
+        .body(`
+
+            <b>Descrição:</b>
+            <p>${movie.overview}</p>`)
+        .open();
+
+  }
+
+  reciverFeedback(resposta) {
+    console.log('Foi emitido o evento e chegou no pai >>>> ', resposta);
   }
 
   changeButton() {

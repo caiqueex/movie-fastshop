@@ -1,18 +1,18 @@
   <div class="paddingTop">
-    <h2 style="text-align: center; padding: 10px">Mostrando novos filmes por popularidade  </h2>
+    <h2 style="text-align: center; padding: 10px">Mostrando novos filmes por popularidade </h2>
 
     <div>
-        <label for="exampleFormControlSelect1">Escolha por gênero</label>
-        <select (change)="selectedGenre($event.target.value)" class="form-control" id="exampleFormControlSelect1">
-          <option  *ngFor="let genre of genresList" (click)="selectedGenre(genre.id)" value={{genre.id}} >{{genre.name}}</option>
-        </select>
+      <label for="exampleFormControlSelect1">Escolha por gênero</label>
+      <select (change)="selectedGenre($event.target.value)" class="form-control" id="exampleFormControlSelect1">
+        <option *ngFor="let genre of genresList" (click)="selectedGenre(genre.id)" value={{genre.id}}>{{genre.name}}
+        </option>
+      </select>
     </div>
 
-      <div class="card-group">
-          <div class="card" *ngFor="let movie of moviesList">
-            <app-movie [movie]="movie"></app-movie>
-            </div>
+    <div class="card-group">
+      <div class="card" *ngFor="let movie of moviesList">
+        <app-movie [movies]="movie"></app-movie>
       </div>
+    </div>
 
-      
   </div>
